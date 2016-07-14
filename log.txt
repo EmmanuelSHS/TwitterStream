@@ -1,0 +1,12 @@
+# TODO
+
+
+## Features
+1. Able to Fetch Twitter Stream Data with User-defined:
+    1. Location
+2. Yield json & store to MongoDB
+
+## 0712
+1. init the project
+2. encapsulate functions into class
+3. token safer access
