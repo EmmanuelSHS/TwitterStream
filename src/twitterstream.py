@@ -4,8 +4,8 @@ import sys
 import time
 import json
 
+from constants import TOKENPATH
 
-TOKENPATH = "~/tokens/twitterapi"
 
 class TwitterStream:
     # access info for Twitter APP
@@ -19,8 +19,11 @@ class TwitterStream:
     http_handler  = urllib.HTTPHandler(debuglevel=_debug)
     https_handler = urllib.HTTPSHandler(debuglevel=_debug)
 
+    url = "https://stream.twitter.com/1.1/statuses/filter.json?"
+
     def __loadtoken(self):
-        return json.load(TOKENPATH)
+        f = open(TOKENPATH, 'r')
+        return json.load(f)
 
     def registtoken(self):
         token = self.__loadtoken()
@@ -36,8 +39,9 @@ class TwitterStream:
     '''
     Construct, sign, and open a twitter request
     using the hard-coded credentials above.
+    return a feed addinfourl indicating feed url
     '''
-    def twitterreq(self, url, method, parameters):
+    def __twitterreqfeed(self, url, parameters):
         req = oauth.Request.from_consumer_and_token(self.oauth_consumer,
                                                    token=self.oauth_token,
                                                    http_method=self.http_method,
@@ -60,21 +64,20 @@ class TwitterStream:
         
         response = opener.open(url, encoded_post_data)
         
-        yield response
+        yield response.geturl()
 
-    def fetchsamples(self):
-        req_time = 180
-        req_time = int(sys.argv[1])
-        time.sleep(3)
-        url = "https://stream.twitter.com/1/statuses/sample.json"
+    def genTweets(self, loc):
+        """return tweet generator, gen json tweets"""
+        self.registtoken()
+
+        url = self.url + loc
         parameters = []
-        response = self.twitterreq(url, "GET", parameters)
-        start_time = time.time()
-        for line in response:
-            print line.strip()
-            now_time = time.time()
-            if (now_time - start_time) > req_time:
-                break
+        addrfeed = self.__twitterreqfeed(url, parameters)
 
-if __name__ == '__main__':
-    pass
+        while True:
+            http = next(addrfeed)
+            if http:
+                for line in urllib.urlopen(http):
+                    yield line
+
+

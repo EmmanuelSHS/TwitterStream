@@ -6,6 +6,9 @@
     1. Location
 2. Yield json & store to MongoDB
 
+## 0714
+1. test streaming capacity
+
 ## 0712
 1. init the project
 2. encapsulate functions into class
