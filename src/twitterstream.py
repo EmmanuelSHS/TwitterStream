@@ -78,6 +78,6 @@ class TwitterStream:
             http = next(addrfeed)
             if http:
                 for line in urllib.urlopen(http):
-                    yield line
+                    yield json.loads(line)
 
 
