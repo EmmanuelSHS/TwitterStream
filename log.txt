@@ -1,10 +1,14 @@
 # TODO
-
+1. increase yielding speed with removal of unnecessary codes -- currently have 2 tweets / second
 
 ## Features
 1. Able to Fetch Twitter Stream Data with User-defined:
     1. Location
 2. Yield json & store to MongoDB
+
+## Dependency
+1. oauth2
+2. pymongo
 
 ## 0714
 1. test streaming capacity
