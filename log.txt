@@ -1,5 +1,6 @@
 # TODO
 1. increase yielding speed with removal of unnecessary codes -- currently have 2 tweets / second
+    (1800 seconds, 3832 tweets)
 
 ## Features
 1. Able to Fetch Twitter Stream Data with User-defined:
