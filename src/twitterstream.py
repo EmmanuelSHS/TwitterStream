@@ -78,6 +78,11 @@ class TwitterStream:
             http = next(addrfeed)
             if http:
                 for line in urllib.urlopen(http):
-                    yield json.loads(line)
+                    try:
+                        yield json.loads(line)
+                    except ValueError:
+                        print "value error on", line
+                        print "no output sleep 8 mins"
+                        time.sleep(8 * 60)
 
 

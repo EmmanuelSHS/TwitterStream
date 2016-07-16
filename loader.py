@@ -35,7 +35,7 @@ class Loader:
                     self.flush(recs)
                     recs = []
                     self.sflag = False
-                    print "running", curr, "total", c, "saved"
+                    print "running", curr/60, "minutes", "total", c, "saved"
             else:
                 self.sflag = True
 
@@ -56,6 +56,6 @@ class Loader:
 
 
 if __name__ == '__main__':
-    dur = 300
+    dur = 60 * 60 * 60
     loader = Loader()
     loader.run(dur)
