@@ -56,6 +56,6 @@ class Loader:
 
 
 if __name__ == '__main__':
-    dur = 60 * 60 * 60
+    dur = 60 * 60 * 24
     loader = Loader()
     loader.run(dur)

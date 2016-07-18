@@ -1,6 +1,6 @@
 import oauth2 as oauth
 import urllib2 as urllib
-import httplib
+import httplib, socket
 import sys
 import time
 import json
@@ -82,10 +82,10 @@ class TwitterStream:
                     for line in urllib.urlopen(http):
                         try:
                             yield json.loads(line)
-                        except ValueError:
-                            print "value error on", line
+                        except ValueError as e:
+                            print e
                             print "no output sleep 8 mins"
                             time.sleep(8 * 60)
-                except httplib.IncompleteRead:
-                    print "Incomplete read"
-                    time.sleep(10)
+                except (httplib.IncompleteRead, socket.error) as e:
+                    print e
+                    time.sleep(60)
