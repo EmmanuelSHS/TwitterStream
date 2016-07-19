@@ -76,16 +76,20 @@ class TwitterStream:
         addrfeed = self.__twitterreqfeed(url, parameters)
 
         while True:
-            http = next(addrfeed)
-            if http:
-                try:
-                    for line in urllib.urlopen(http):
-                        try:
-                            yield json.loads(line)
-                        except ValueError as e:
-                            print e
-                            print "no output sleep 8 mins"
-                            time.sleep(8 * 60)
-                except (httplib.IncompleteRead, socket.error) as e:
-                    print e
-                    time.sleep(60)
+            try:
+                http = next(addrfeed)
+                if http:
+                    try:
+                        for line in urllib.urlopen(http):
+                            try:
+                                yield json.loads(line)
+                            except ValueError as e:
+                                print e
+                                print "no output sleep 8 mins"
+                                time.sleep(8 * 60)
+                    except (httplib.IncompleteRead, socket.error) as e:
+                        print e
+                        time.sleep(5 * 60)
+            except StopIteration as e:
+                print e
+                time.sleep(60 * 60)
