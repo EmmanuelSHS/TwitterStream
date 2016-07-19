@@ -26,7 +26,7 @@ class TwitterStream:
         f = open(TOKENPATH, 'r')
         return json.load(f)
 
-    def registtoken(self):
+    def __registtoken(self):
         token = self.__loadtoken()
 
         api_key = token["api_key"]
@@ -69,7 +69,7 @@ class TwitterStream:
 
     def genTweets(self, loc):
         """return tweet generator, gen json tweets"""
-        self.registtoken()
+        self.__registtoken()
 
         url = self.url + loc
         parameters = []

@@ -16,12 +16,12 @@ class Loader:
         self.dev = 10
         self.sflag = True
 
-    def run(self, dur):
+    def run(self, dur, criteria):
         print "generator starts"
 
         start = time.time()
 
-        gen = self.ts.genTweets(NYSFLOC)
+        gen = self.ts.genTweets(criteria)
         recs = []
         c = 0
         while True:
@@ -58,4 +58,4 @@ class Loader:
 if __name__ == '__main__':
     dur = 60 * 60 * 24
     loader = Loader()
-    loader.run(dur)
+    loader.run(dur, NYSFLOC)

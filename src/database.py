@@ -2,11 +2,12 @@
 # coding=utf-8
 
 from pymongo import MongoClient
+from constants import HOST, PORT, DB, COLLECTION
 
 class Mongo:
     def __init__(self):
-        self.client = MongoClient("localhost", 27017)
-        self.tweets = self.client.twitter.nysf
+        self.client = MongoClient(HOST, PORT)
+        self.tweets = self.client[DB][COLLECTION]
 
     def bulkInsert(self, records):
         self.tweets.insert_many(records)
