@@ -11,6 +11,10 @@
 1. oauth2
 2. pymongo
 
+## 0719
+Catch several expections
+Note that twitter streaming api will pause on 4 a.m. EST everyday
+
 ## 0714
 1. test streaming capacity
 
