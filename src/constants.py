@@ -16,3 +16,5 @@ PORT = 27017
 DB = "twitter"
 COLLECTION = "nysf"
 
+SLEEPTIME = "4"
+

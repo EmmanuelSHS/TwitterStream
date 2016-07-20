@@ -6,6 +6,7 @@ import time
 from src.database import Mongo
 from src.twitterstream import TwitterStream
 from src.constants import NYSFLOC
+from src.utils import stopwatch
 
 
 class Loader:
@@ -39,6 +40,10 @@ class Loader:
             else:
                 self.sflag = True
 
+            # at given time (4 am EDT), sleep on hour
+            if stopwatch():
+                time.sleep(3600)
+
             if curr > dur:
                 if recs:
                     self.flush(recs)
@@ -56,6 +61,6 @@ class Loader:
 
 
 if __name__ == '__main__':
-    dur = 60 * 60 * 24
+    dur = 60 * 60 * 12
     loader = Loader()
     loader.run(dur, NYSFLOC)

@@ -15,6 +15,10 @@ Twitter Streaming API with Filter to Database
     
     4. Other criteria described in API doc
 
+More details:
+
+    https://dev.twitter.com/streaming/overview/request-parameters#track
+
 2. Yield json, store to MongoDB
 
 ## Dependency
