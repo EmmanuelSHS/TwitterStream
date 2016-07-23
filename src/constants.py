@@ -7,6 +7,7 @@ TOKENPATH = "/home/mengqi/tokens/twitterapi.tk"
 SFLOC = "locations=-122.75,36.8,-121.75,37.8"
 NYLOC = "locations=-74,40,-73,41"
 NYSFLOC = "locations=-122.75,36.8,-121.75,37.8,-74,40,-73,41"
+HW = "track='Hillary','Wikileaks', 'Clinton'"
 
 STOCK = "track=$..."
 
@@ -14,7 +15,8 @@ STOCK = "track=$..."
 HOST = "localhost"
 PORT = 27017
 DB = "twitter"
-COLLECTION = "nysf"
+#COLLECTION = "nysf"
+COLLECTION = "hillarywikileaks"
 
 SLEEPTIME = "4"
 

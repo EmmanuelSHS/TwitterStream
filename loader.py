@@ -5,7 +5,7 @@ import time
 
 from src.database import Mongo
 from src.twitterstream import TwitterStream
-from src.constants import NYSFLOC
+from src.constants import HW
 from src.utils import stopwatch
 
 
@@ -61,6 +61,6 @@ class Loader:
 
 
 if __name__ == '__main__':
-    dur = 60 * 60 * 12
+    dur = 60 * 60 * 60
     loader = Loader()
-    loader.run(dur, NYSFLOC)
+    loader.run(dur, HW)
