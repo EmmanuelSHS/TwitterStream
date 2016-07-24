@@ -5,7 +5,7 @@ import sys
 import time
 import json
 
-from constants import TOKENPATH
+from constants import TOKENPATH, URL
 
 
 class TwitterStream:
@@ -19,8 +19,6 @@ class TwitterStream:
 
     http_handler  = urllib.HTTPHandler(debuglevel=_debug)
     https_handler = urllib.HTTPSHandler(debuglevel=_debug)
-
-    url = "https://stream.twitter.com/1.1/statuses/filter.json?"
 
     def __loadtoken(self):
         f = open(TOKENPATH, 'r')
@@ -67,11 +65,11 @@ class TwitterStream:
         
         yield response.geturl()
 
-    def genTweets(self, loc):
+    def genTweets(self):
         """return tweet generator, gen json tweets"""
         self.__registtoken()
 
-        url = self.url + loc
+        url = URL
         parameters = []
         addrfeed = self.__twitterreqfeed(url, parameters)
 
