@@ -15,13 +15,11 @@ class dbTest(unittest.TestCase):
         db = Mongo()
 
         ny = [{"test": "hello"}]
-        sf = [{"test": "hello"}]
         
-        db.bulkInsert(ny, sf)
-        nyc, sfc = db.getCounts()
+        db.bulkInsert(ny)
+        nyc = db.getCounts()
 
         self.assertEqual(1, nyc)
-        self.assertEqual(1, sfc)
 
 
 if __name__ == '__main__':

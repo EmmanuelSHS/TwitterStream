@@ -17,12 +17,12 @@ class Loader:
         self.dev = 10
         self.sflag = True
 
-    def run(self, dur, criteria):
+    def run(self, dur):
         print "generator starts"
 
         start = time.time()
 
-        gen = self.ts.genTweets(criteria)
+        gen = self.ts.genTweets()
         recs = []
         c = 0
         while True:
